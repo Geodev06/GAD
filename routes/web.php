@@ -1,11 +1,9 @@
 <?php
 
-use App\Livewire\CreateNewUser;
 use App\Livewire\Dashboard;
-use App\Livewire\Login;
-use App\Livewire\ManageUsers;
-use App\Livewire\Register;
+
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Login::class)->name('login');
+Route::get('/', function () {
+    return view('pages.index');
+})->name('login');
 
-Route::get('/register', Register::class);
+Route::get('/register', function () {
+    return view('pages.register');
+})->name('register');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', Dashboard::class);
-    Route::get('/manage-users', ManageUsers::class);
+
+    Route::get('dashboard', function () {
+        return view('pages.dashboard');
+    });
 });

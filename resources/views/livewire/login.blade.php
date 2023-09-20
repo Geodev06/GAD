@@ -1,62 +1,57 @@
-<div>
-    @include('partials.head')
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-            <div class="content-wrapper d-flex align-items-center auth">
-                <div class="row flex-grow">
-                    <div class="col-lg-5 mx-auto">
-                        <div class="auth-form-light text-left p-5">
-                            <div class="brand-logo">
-                                <img src="../../assets/images/logo.svg">
+<section class="bg-gray-50 dark:bg-gray-900">
+
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+            <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+            Flowbite
+        </a>
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Sign in to your account
+                </h1>
+                @include('partials.flash-message')
+                @include('partials.form-error')
+
+                <form class="space-y-4 md:space-y-6" action="" wire:submit.prevent="authenticate">
+                    <div>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your User Id</label>
+                        <input type="text" wire:model="user_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    @if($userType == '0')
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" wire:model="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                    </div>
+                    @endif
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select User type</label>
+                        <select wire:model.live="userType" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                            <option selected>Choose one</option>
+                            <option value="0">Administrator</option>
+                            <option value="1">Teacher</option>
+                            <option value="2">Student</option>
+
+                        </select>
+
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" wire:model="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" />
                             </div>
-
-                            @include('partials.flash-message')
-
-                            <h4>Hello, Welcome back!</h4>
-                            <h6 class="font-weight-light">Please sign in to continue.</h6>
-                            <form class="pt-3" wire:submit.prevent="authenticate">
-
-
-                                <div class=" form-group">
-                                    <label>User Id</label>
-                                    <input type="text" wire:model="user_id" class="form-control form-control-lg" placeholder="Ex. Juandelacruz_123" />
-                                    @error('user_id') <span class="text-danger">{{$message}}</span>@enderror
-                                </div>
-
-
-                                @if($userType == '0')
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" wire:model="password" class="@error('password') bg-danger text-white @enderror form-control form-control-lg" placeholder="********">
-                                    @error('password') <span class="text-error">{{$message}}</span>@enderror
-                                </div>
-                                @endif
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlSelect1">User Type</label>
-                                    <select class="form-control form-control-lg" wire:model.live="userType" id="exampleFormControlSelect1">
-                                        <option value="">Choose one</option>
-                                        <option value="0">Adminstrator</option>
-                                        <option value="1">Teacher</option>
-                                        <option value="2">Student</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
-                                </div>
-
-                            </form>
+                            <div class="ml-3 text-sm">
+                                <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+
+                </form>
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 
-    @include('partials.scripts')
-
-</div>
+</section>
