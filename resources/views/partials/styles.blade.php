@@ -15,6 +15,11 @@
          background-color: crimson;
          color: white;
      }
+
+     #nprogress .bar {
+         background-color: crimson;
+         height: 2px;
+     }
  </style>
  <script>
      tailwind.config = {
@@ -82,4 +87,5 @@
          initFlowbite();
      })
  </script>
+
  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">

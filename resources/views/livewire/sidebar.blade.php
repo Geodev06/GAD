@@ -3,7 +3,7 @@
     <div class=" bg-gray-100 py-6 flex flex-col justify-center ">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <!-- Widget start -->
-            <div class="rounded-3xl flex bg-white p-7 justify-between flex-col space-y-6 sm:space-y-0 items-center sm:items-stretch sm:flex-row" id="widget">
+            <div class="flex bg-white p-7 justify-between flex-col space-y-6 sm:space-y-0 items-center sm:items-stretch sm:flex-row" id="widget">
                 <div class="flex flex-col space-x-0 items-center">
                     <span class="avatar">{{Auth::user()->fullname[0]}}</span>
                     <p class=" text-center capitalize font-semibold mb-2">{{Auth::user()->gender == 0 ? 'Mr. ': 'Ms. '}} {{Auth::user()->fullname}}</p>
@@ -36,27 +36,34 @@
                 <ul id="dropdown-example" class="hidden py-2 space-y-2">
                     @if(Auth::user()->role == 0)
                     <li>
-                        <a href="/manage-users" wire:navigate class="{{ request()->is('manage-users') ? 'text-purple-600' : 'text-gray-900' }} flex items-center w-full p-2  transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="/manage-users" wire:navigate class="text-sm {{ request()->is('manage-users') ? 'text-purple-600' : 'text-gray-900' }} flex items-center w-full p-2  transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <span class="mdi mdi-account-group mr-2 text-xl"></span>
                             Manage Users</a>
                     </li>
 
                     @endif
                     @if(Auth::user()->role == 1)
+
                     <li>
-                        <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="manage-sections" wire:navigate class="text-sm {{ request()->is('manage-sections') ? 'text-purple-600' : 'text-gray-900' }} flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            <span class="mdi mdi-group mr-2 text-xs"></span>
+                            Sections and levels</a>
+                    </li>
+
+                    <li>
+                        <a href="manage-students" wire:navigate class="text-sm {{ request()->is('manage-students') ? 'text-purple-600' : 'text-gray-900' }} flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <span class="mdi mdi-account-school-outline mr-2 text-xl"></span>
                             Students</a>
                     </li>
 
                     <li>
-                        <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="#" class="flex items-center w-full p-2 text-sm text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <span class="mdi mdi-bookshelf mr-2 text-xl"></span>
                             Learning Materials</a>
                     </li>
 
                     <li>
-                        <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a href="#" class="flex items-center w-full p-2 text-sm text-gray-900 transition duration-75 rounded-lg pl-8 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             <span class="mdi mdi-file-question-outline mr-2 text-xl"></span>
                             Questionnaires</a>
                     </li>
@@ -66,12 +73,14 @@
             </li>
 
 
+            @if(Auth::user()->role == 0)
             <li>
-                <a href="/dashboard" wire:navigate class="{{ request()->is('settings') ? 'text-purple-600' : 'text-gray-900' }} flex items-center p-2  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="/settings" wire:navigate class="{{ request()->is('settings') ? 'text-purple-600' : 'text-gray-900' }} flex items-center p-2  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <span class="mdi mdi-cog text-xl"></span>
                     <span class="ml-3">Settings</span>
                 </a>
             </li>
+            @endif
 
             <li>
                 <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

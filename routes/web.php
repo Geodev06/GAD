@@ -34,4 +34,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('manage-users', function () {
         return view('pages.manage-user');
     });
+
+    Route::get('settings', function () {
+        return view('pages.settings');
+    });
+});
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('manage-students', function () {
+        return view('pages.manage-student');
+    });
+
+    Route::get('manage-sections', function () {
+        return view('pages.manage-section');
+    });
 });
