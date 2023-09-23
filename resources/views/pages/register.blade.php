@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account setup</title>
+    <title>Register</title>
     @include('partials.styles')
-    @livewireStyles
 
+    @livewireStyles
 </head>
-<livewire:register lazy />
-@livewireScripts
 
 <body>
+    <livewire:register lazy />
+    @livewireScripts
 
 </body>
 

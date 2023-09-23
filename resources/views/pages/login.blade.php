@@ -4,19 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Application name</title>
+    <title>Login</title>
     @include('partials.styles')
-    @livewireStyles
 
+    @livewireStyles
 </head>
 
-@livewireScripts
-
 <body>
-
     <livewire:login lazy />
+    @livewireScripts
 
 </body>
-
 
 </html>

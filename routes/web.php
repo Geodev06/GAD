@@ -1,7 +1,8 @@
 <?php
 
 use App\Livewire\Dashboard;
-
+use App\Livewire\Login;
+use App\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.index');
+    return view('pages.login');
 })->name('login');
 
 Route::get('/register', function () {

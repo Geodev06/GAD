@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Login extends Component
@@ -45,6 +46,7 @@ class Login extends Component
         return view('partials.placeholder');
     }
 
+    #[Title('Login')]
     public function render()
     {
         return view('livewire.login');

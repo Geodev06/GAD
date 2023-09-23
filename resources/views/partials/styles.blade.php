@@ -76,12 +76,10 @@
          }
      }
  </script>
- <script data-navigate-once>
+
+ <script>
      document.addEventListener('livewire:navigated', () => {
-         console.log('navigated')
-         initFlowbite()
+         initFlowbite();
      })
  </script>
-
- <script src="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/scripts/verify.min.js"></script>
  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">

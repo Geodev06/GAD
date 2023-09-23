@@ -11,13 +11,13 @@ class ManageUsers extends Component
 {
     public $createForm = false;
 
-    public $fullname;
-    public $user_id;
+    public $fullname = '';
+    public $user_id = '';
     public $gender = 0;
     public $search = '';
 
     protected $rules = [
-        'fullname' => 'required|regex:/^[a-zA-Z\s.]+$/',
+        'fullname' => 'required|regex:/^[^\s][a-zA-Z\s.]+$/',
         'user_id' => 'required|regex:/^[a-zA-Z0-9_-]+$/|unique:users',
     ];
 
@@ -36,6 +36,7 @@ class ManageUsers extends Component
 
         session()->flash('message', 'A user has been created.');
         $this->createForm =  !$this->createForm;
+        $this->reset();
     }
     public function toggleForm()
     {

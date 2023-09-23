@@ -17,7 +17,7 @@ class Register extends Component
     public $terms;
 
     protected $rules = [
-        'fullname' => 'required|regex:/^[a-zA-Z\s.]+$/',
+        'fullname' => 'required|regex:/^[^\s][a-zA-Z\s.]+$/',
         'user_id' => 'required|regex:/^[a-zA-Z0-9_-]+$/',
         'password' => 'required|min:8|confirmed',
 
@@ -52,6 +52,7 @@ class Register extends Component
         ]);
 
         session()->flash('message', 'Your account has been created please login to continue.');
+        
         return $this->redirect('/', navigate: true);
     }
 
