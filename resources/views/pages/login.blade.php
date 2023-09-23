@@ -8,6 +8,7 @@
     @include('partials.styles')
 
     @livewireStyles
+
 </head>
 
 <body>
