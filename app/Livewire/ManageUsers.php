@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
@@ -46,7 +47,8 @@ class ManageUsers extends Component
                 'role' => 1,
                 'status' => 1,
                 'gender' => $this->gender,
-                'password' => Hash::make('GAD-2023')
+                'password' => Hash::make('GAD-2023'),
+                'created_by' => Auth::user()->id
             ]);
 
             session()->flash('message', 'A user has been created.');

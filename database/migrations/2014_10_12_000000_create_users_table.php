@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('status')->default(1);
             $table->integer('gender');
             $table->string('password')->nullable();
+            $table->string('created_by')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
